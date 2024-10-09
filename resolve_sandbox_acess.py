@@ -1,6 +1,8 @@
 import pyautogui as pg
 import time
 
+pg.FAILSAFE = True
+
 def locate_and_click(image_path):
     time.sleep(0.1)
     located_button = pg.locateCenterOnScreen(image_path, confidence=0.8)
@@ -96,7 +98,7 @@ For raising tickets in the future, we recommend using the following link:
 http://support.deliverycentralplatform.ibm.com/
 
 Thanks!"""
-    pg.write(message)
+    pg.write(message2)
     time.sleep(7)
 
 
