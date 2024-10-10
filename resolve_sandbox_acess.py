@@ -73,31 +73,32 @@ def add_customer_comments():
     locate_and_click(r"C:\Users\PushkrajKulkarni\IDCP\Automation\images\notes.png")
     locate_and_click(r"C:\Users\PushkrajKulkarni\IDCP\Automation\images\customer_comments.png")
     message = """Hello,
-Your access to the Test System has been successfully created and
-assigned Project Manager role to Test Project_UT project. You can now begin utilizing
-the system and all its features.
-URL to Test system : https://test.deliverycentralplatform.ibm.com/digite/Request?Key=login , you need to use IBM Internet id/password to login.
-Request to go through below links prior to use Test/sandbox:
-IDCP Enablement Microsite https://w3.ibm.com/w3publisher/cse/ibm-delivery-central-platform
-I have shared the URL of test system and also Please to go through
-enablement
-(demos, published and under development courses are listed there)
-Thanks!!"""
+        Your access to the Test System has been successfully created and
+        assigned Project Manager role to Test Project_UT project. You can now begin utilizing
+        the system and all its features.
+        URL to Test system : https://test.deliverycentralplatform.ibm.com/digite/Request?Key=login , you need to use IBM Internet id/password to login.
+        Request to go through below links prior to use Test/sandbox:
+        IDCP Enablement Microsite https://w3.ibm.com/w3publisher/cse/ibm-delivery-central-platform
+        I have shared the URL of test system and also Please to go through
+        enablement
+        (demos, published and under development courses are listed there)
+        Thanks!!"""
 
     message2="""Hello,
-Your access to the Test System has been successfully created and assigned the Project Manager role for the Test Project_UT project. You can now begin utilizing the system and all its features.
+        Your access to the Test System has been successfully created and assigned the Project Manager role for the Test Project_UT project. You can now begin utilizing the system and all its features.
 
-URL to Test system: https://test.deliverycentralplatform.ibm.com/digite/Request?Key=login. 
-You will need to use your IBM Internet ID/password to log in.
+        URL to Test system: https://test.deliverycentralplatform.ibm.com/digite/Request?Key=login. 
+        You will need to use your IBM Internet ID/password to log in.
 
-Please go through the following links prior to using the Test/Sandbox:
+        Please go through the following links prior to using the Test/Sandbox:
 
-IDCP Enablement Microsite: https://w3.ibm.com/w3publisher/cse/ibm-delivery-central-platform
-(Demos, published, and under-development courses are listed there)
-For raising tickets in the future, we recommend using the following link:
-http://support.deliverycentralplatform.ibm.com/
+        IDCP Enablement Microsite: https://w3.ibm.com/w3publisher/cse/ibm-delivery-central-platform
+        (Demos, published, and under-development courses are listed there)
+        For raising tickets in the future, we recommend using the following link:
+        http://support.deliverycentralplatform.ibm.com/
 
-Thanks!"""
+        Thanks!"""
+    
     pg.write(message2)
     time.sleep(7)
 
