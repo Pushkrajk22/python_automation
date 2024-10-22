@@ -17,9 +17,9 @@ def resolve_state():
     
     # Check if the button was found
     if state_button is not None:
-            pg.moveTo(state_button, duration=0.1) 
+            pg.moveTo(state_button, duration=0.2) 
             pg.click()  # Click the left mouse button
-            time.sleep(0.1)
+            time.sleep(0.2)
             resolved_button = pg.locateCenterOnScreen(r"C:\Users\PushkrajKulkarni\IDCP\Automation\images\resolved.png", confidence=0.8)
             pg.moveTo(resolved_button, duration=0.2)  # Move to the button smoothly over 1 second
             pg.click()  # Click the left mouse button
@@ -75,7 +75,8 @@ def add_customer_comments():
     locate_and_click(r"C:\Users\PushkrajKulkarni\IDCP\Automation\images\customer_comments.png")
 
     message2="""Hello,
-        Your access to the Test System has been successfully created and assigned the Project Manager role for the Test Project_UT project. You can now begin utilizing the system and all its features.
+        Your access to the Test System has been successfully created and assigned the Project Manager role for the Test Project_UT project. 
+        You can now begin utilizing the system and all its features.
 
         URL to Test system: https://test.deliverycentralplatform.ibm.com/digite/Request?Key=login. 
         You will need to use your IBM Internet ID/password to log in.
@@ -84,8 +85,8 @@ def add_customer_comments():
 
         IDCP Enablement Microsite: https://w3.ibm.com/w3publisher/cse/ibm-delivery-central-platform
         (Demos, published, and under-development courses are listed there)
-        For raising tickets in the future, we recommend using the following link:
-        http://support.deliverycentralplatform.ibm.com/
+        For raising tickets in the future, we recommend using the below link:
+        https://support.deliverycentralplatform.ibm.com/
 
         Thanks!"""
     
@@ -96,9 +97,10 @@ def add_customer_comments():
 
 if __name__ =="__main__":
     #time.sleep(3)  #Instead of waiting 3 sec we can take our own time to navigate andpress caps lock to start
-    keyboard.wait('caps lock')
+    keyboard.wait('shift')
+    time.sleep(0.2)
     pg.scroll(1500)
-    time.sleep(0.1)
+    time.sleep(0.2)
     resolve_state()
     pg.scroll(-900)
     add_customer_comments()
