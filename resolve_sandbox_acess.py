@@ -6,10 +6,14 @@ pg.FAILSAFE = True
 
 def locate_and_click(image_path):
     time.sleep(0.1)
-    located_button = pg.locateCenterOnScreen(image_path, confidence=0.8)
-    pg.moveTo(located_button, duration=0.1)
-    pg.click()  # Click the left mouse button
-    time.sleep(0.2)
+    try:
+        located_button = pg.locateCenterOnScreen(image_path, confidence=0.8)
+        if located_button is not None:
+            pg.moveTo(located_button, duration=0.1)
+            pg.click()  # Click the left mouse button
+            time.sleep(0.2)
+    except Exception as e:
+         print("Error from locate_and_click: Image not find to click")
 
 def resolve_state():
     # Locate the center of the image on the screen
@@ -17,14 +21,15 @@ def resolve_state():
     
     # Check if the button was found
     if state_button is not None:
-            pg.moveTo(state_button, duration=0.2) 
+            pg.moveTo(state_button, duration=0.1) 
             pg.click()  # Click the left mouse button
-            time.sleep(0.2)
-            resolved_button = pg.locateCenterOnScreen(r"C:\Users\PushkrajKulkarni\IDCP\Automation\images\resolved.png", confidence=0.8)
-            pg.moveTo(resolved_button, duration=0.2)  # Move to the button smoothly over 1 second
-            pg.click()  # Click the left mouse button
-            #pg.hotkey("ctrl","v")
             time.sleep(0.1)
+            
+            pg.write("Resolved")
+
+            time.sleep(0.1)
+            pg.press('enter')
+
 
 def fill_resolution_info():
     time.sleep(0.1)
@@ -33,27 +38,30 @@ def fill_resolution_info():
     
     #Resolution Code
     locate_and_click(r"C:\Users\PushkrajKulkarni\IDCP\Automation\images\resolution_code.png")
-    locate_and_click(r"C:\Users\PushkrajKulkarni\IDCP\Automation\images\solved_permanently.png")
-
+    pg.write("Solved (Permanently)")
+    time.sleep(0.1)
+    pg.press('enter')
+    
     #Issue Type
     locate_and_click(r"C:\Users\PushkrajKulkarni\IDCP\Automation\images\issue_type.png")
-    locate_and_click(r"C:\Users\PushkrajKulkarni\IDCP\Automation\images\authorization-role.png")
-
+    pg.write("Authorization/Role")
+    time.sleep(0.1)
+    pg.press('enter')
+    
     #Resolution Notes
     locate_and_click(r"C:\Users\PushkrajKulkarni\IDCP\Automation\images\resolution_notes.png")
-    message = "Access has been provided"
-
-    pg.write(message)
-    time.sleep(0.15)
+    pg.write("Access has been provided")
+    time.sleep(0.12)
 
     #type of resolution
     locate_and_click(r"C:\Users\PushkrajKulkarni\IDCP\Automation\images\type_of_resolution.png")
-
-    locate_and_click(r"C:\Users\PushkrajKulkarni\IDCP\Automation\images\permanent_fix.png")
-
+    pg.write("Permanent Fix")
+    time.sleep(0.1)
+    pg.press('enter')
+    
     #functional area
     locate_and_click(r"C:\Users\PushkrajKulkarni\IDCP\Automation\images\functional_area.png")
-    pg.press('U')
+    pg.write("UT")
     pg.press('enter')
 
     #process area
@@ -62,7 +70,7 @@ def fill_resolution_info():
     pg.moveTo(process_area_button, duration=0.2)  # Move to the button smoothly over 1 second
     pg.click()  # Click the left mouse button
     time.sleep(0.1)
-    pg.press('A')
+    pg.write("Authorization/Role")
     pg.press('enter')
 
 
@@ -70,11 +78,17 @@ def resolve_ticket():
     locate_and_click(r"C:\Users\PushkrajKulkarni\IDCP\Automation\images\resolve.png")
 
 
-def add_customer_comments():
+def add_customer_comments(tool):
     locate_and_click(r"C:\Users\PushkrajKulkarni\IDCP\Automation\images\notes.png")
-    locate_and_click(r"C:\Users\PushkrajKulkarni\IDCP\Automation\images\customer_comments.png")
+    locate_and_click(r"C:\Users\PushkrajKulkarni\IDCP\Automation\images\customer_comments.png")    
+    
+    link_to_new_ticketing_tool = None
 
-    message2="""Hello,
+    if tool == "New":
+        link_to_new_ticketing_tool = """For raising tickets in the future, we recommend using the below link:
+        https://support.deliverycentralplatform.ibm.com/"""
+
+    message=f"""Hello,
         Your access to the Test System has been successfully created and assigned the Project Manager role for the Test Project_UT project. 
         You can now begin utilizing the system and all its features.
 
@@ -85,12 +99,11 @@ def add_customer_comments():
 
         IDCP Enablement Microsite: https://w3.ibm.com/w3publisher/cse/ibm-delivery-central-platform
         (Demos, published, and under-development courses are listed there)
-        For raising tickets in the future, we recommend using the below link:
-        https://support.deliverycentralplatform.ibm.com/
+        {link_to_new_ticketing_tool}
 
         Thanks!"""
-    
-    pg.write(message2)
+
+    pg.write(message)
     time.sleep(7)
 
 
@@ -98,11 +111,14 @@ def add_customer_comments():
 if __name__ =="__main__":
     #time.sleep(3)  #Instead of waiting 3 sec we can take our own time to navigate andpress caps lock to start
     keyboard.wait('shift')
+    ticketing_tool = pg.confirm(text='Which platform the ticket is raised from?', title='', buttons=['Old', 'New'])
     time.sleep(0.2)
-    pg.scroll(1500)
+    pg.scroll(1500)     # To ensure top of the page
     time.sleep(0.2)
     resolve_state()
+
     pg.scroll(-900)
-    add_customer_comments()
+    add_customer_comments(ticketing_tool)
+
     fill_resolution_info()
     #resolve_ticket()
