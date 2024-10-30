@@ -21,7 +21,7 @@ if __name__ =="__main__":
     pg.press('tab')
     pg.write("User Addition")
     functions.locate_and_click(r"C:\Users\PushkrajKulkarni\IDCP\Automation\images\save_blue.png")
-    time.sleep(5)
+    time.sleep(7)
 
     mail_button = pg.locateCenterOnScreen(r"C:\Users\PushkrajKulkarni\IDCP\Automation\images\resourse_mail_id.png", confidence=0.7)
     pg.click(mail_button.x, mail_button.y+50)

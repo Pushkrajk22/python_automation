@@ -54,26 +54,48 @@ def add_row_manually(activity, selection):
 
 if __name__ =="__main__":
 
-    file_names = [
-
-    "APPLICATION_TRANSITION",
-   
+    filenames = [
+        # "CONTRACT MANAGEMENT",
+        # "SUPPLIER THIRD PARTY MANAGEMENT",
+        "PROGRAM MANAGEMENT ",
+        "OPERATIONS",
+        "PROJECT MANAGEMENT",
+        "PROJECT PREPARATION",
+        "DEVOPS SETUP",
+        "BUSINESS BLUEPRINT",
+        "REALISATION",
+        "FINAL PREPARATION",
+        "GO LIVE AND SUPPORT",
+        "TRANSITION PLANNING",
+        "APPLICATION TRANSITION",
+        "INFRASTRUCTURE SETUP",
+        "SECURITY REGULATORY COMPLIANCE"
     ]
 
-    for file in file_names:
+    keyboard.wait("shift")
+
+    for file in filenames:
 
         print(file)
-        print()    
+           
         #time.sleep(3)  #Instead of waiting 3 sec we can take our own time to navigate andpress caps lock to start
-        keyboard.wait("shift")
+        #keyboard.wait("shift")
 
         # Read the data from the file
-        with open(f"{file}.json", 'r') as file:
+        with open(f"{file}"+".json", 'r') as file:
             data = json.load(file)
-
+        r=0
         for row in data["rows"]:
             activity = row["activity"]  
             selection = row["selection"]
+            r = r+1
+    
             #print(f"Activity: {activity}, Selection: {selection}")
 
             add_row_manually(activity, selection)
+        
+        # print(" Rows are " , r)
+        # print()
+        pg.press("tab")
+        time.sleep(0.09)
+        pg.press("tab")

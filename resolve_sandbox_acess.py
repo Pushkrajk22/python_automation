@@ -21,7 +21,7 @@ def resolve_state():
     
     # Check if the button was found
     if state_button is not None:
-            pg.moveTo(state_button, duration=0.1) 
+            pg.moveTo(state_button.x+100, state_button.y, duration=0.1) 
             pg.click()  # Click the left mouse button
             time.sleep(0.1)
             
