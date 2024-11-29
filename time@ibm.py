@@ -16,7 +16,7 @@ def run(playwright: Playwright) -> None:
     page.get_by_placeholder("IBM email address (e.g. jdoe@").click()
     page.get_by_placeholder("IBM email address (e.g. jdoe@").fill("Pushkraj.Kulkarni@ibm.com")
     page.get_by_placeholder("Password").click()
-    page.get_by_placeholder("Password").fill("JaiGajanan$2002")
+    page.get_by_placeholder("Password").fill("")
     page.get_by_role("button", name="Sign in").click()
     page.goto("https://login.w3.ibm.com/saml/sps/auth?stateid=879fef84-0841-4647-9131-10b8ec813cd5")
     page.goto("https://time.ibm.com/login/callback?tkn=eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE3MzIyNTM4MDUsInRkIjp7InczIjoiUHVzaGtyYWouS3Vsa2FybmlAaWJtLmNvbSIsImNuIjoiMDA1Qk9PNzQ0IiwiZm4iOiJQdXNoa3JhaiBLdWxrYXJuaSIsImFkIjpmYWxzZSwib2MiOiJGUSIsImRlcHQiOiJKMTkiLCJockNvbXBhbnlDb2RlIjoiMDA2MyIsImVtcGxveWVlQ291bnRyeUNvZGUiOiI3NDQifX0.bCjRglzIZg27LNBocHuFFENxd_RwGcgt00ubvZ26_58R0lZ_jCtCrNuXKeZab4nEgrjke8hZcBYQxJCWRW67lQ&RelayState=7835df68-08ec-46d0-bfc9-b67c8b9b08e4")
