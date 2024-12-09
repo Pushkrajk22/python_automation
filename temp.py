@@ -1,49 +1,24 @@
-# # to select and delete rows
-
 import pyautogui as pg
 import time
 import keyboard
+import pyperclip
 
 pg.FAILSAFE = True
 
-# time.sleep(3)
+pg.PAUSE = 0.5
 
+def paste_clipboard_on_tab_v():
+    while True:
+        # Check if 'Tab' and 'V' are pressed together
+        if keyboard.is_pressed('tab') and keyboard.is_pressed('v'):
+            if keyboard.is_pressed('v'):
+                # Get the text from the clipboard
+                clipboard_text = pyperclip.paste()
+                pg.write(clipboard_text)  # Print the clipboard content
+                # Wait a little to avoid multiple prints in one key press
+                keyboard.wait('tab')  # Wait for the 'Tab' key to be released
 
-# # for i in range(300):
-# #     pg.scroll(-142)
-# #     time.sleep(0.1)
-# #     pg.click()
-
-# #     time.sleep(0.1)
-
-keyboard.wait("shift")
-# for i in range(41):
-#     pg.click()
-#     time.sleep(0.1)
-
-import os
-
-# List of JSON filenames to create
-filenames = [
-    "CONTRACT MANAGEMENT",
-    "SUPPLIER THIRD PARTY MANAGEMENT",
-    "PROGRAM MANAGEMENT ",
-    "OPERATIONS",
-    "PROJECT MANAGEMENT",
-    "PROJECT PREPARATION",
-    "DEVOPS SETUP",
-    "BUSINESS BLUEPRINT",
-    "REALISATION",
-    "FINAL PREPARATION",
-    "GO LIVE AND SUPPORT",
-    "TRANSITION PLANNING",
-    "APPLICATION TRANSITION",
-    "INFRASTRUCTURE SETUP",
-    "SECURITY REGULATORY COMPLIANCE"
-]
-
-# Create each JSON file as an empty file
-for filename in filenames:
-    # with open(filename + ".json", 'w') as file:
-    #     file.write(" ")  # Create an empty JSON object in each file
-    os.remove(filename+".json")
+while True:
+    keyboard.wait('tab','v')
+    # Start the function
+    paste_clipboard_on_tab_v()

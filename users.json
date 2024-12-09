@@ -1,5 +1,6 @@
 {
     "users": [
-        {"mail": "Sibashisa.Padhy@ibm.com", "role": "Project Manager"}
+        {"mail": "", "role": "Project Manager", "template":""}
+       
     ]
 }
